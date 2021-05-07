@@ -1,0 +1,5 @@
+E:\Projects\EdServerCore\SchoolInMindServer\CoreServiceLayer\obj\Debug\net5.0\CoreServiceLayer.csprojAssemblyReference.cache
+E:\Projects\EdServerCore\SchoolInMindServer\CoreServiceLayer\obj\Debug\net5.0\CoreServiceLayer.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projects\EdServerCore\SchoolInMindServer\CoreServiceLayer\obj\Debug\net5.0\CoreServiceLayer.AssemblyInfoInputs.cache
+E:\Projects\EdServerCore\SchoolInMindServer\CoreServiceLayer\obj\Debug\net5.0\CoreServiceLayer.AssemblyInfo.cs
+E:\Projects\EdServerCore\SchoolInMindServer\CoreServiceLayer\obj\Debug\net5.0\CoreServiceLayer.csproj.CoreCompileInputs.cache

@@ -1,0 +1,220 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\CoreServiceLayer\\CoreServiceLayer.csproj": {}
+  },
+  "projects": {
+    "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\BottomhalfCore\\BottomhalfCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\BottomhalfCore\\BottomhalfCore.csproj",
+        "projectName": "BottomhalfCore",
+        "projectPath": "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\BottomhalfCore\\BottomhalfCore.csproj",
+        "packagesPath": "C:\\Users\\IstiyaQ\\.nuget\\packages\\",
+        "outputPath": "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\BottomhalfCore\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\IstiyaQ\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.21, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\CommonModal\\CommonModal.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\CommonModal\\CommonModal.csproj",
+        "projectName": "CommonModal",
+        "projectPath": "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\CommonModal\\CommonModal.csproj",
+        "packagesPath": "C:\\Users\\IstiyaQ\\.nuget\\packages\\",
+        "outputPath": "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\CommonModal\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\IstiyaQ\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\BottomhalfCore\\BottomhalfCore.csproj": {
+                "projectPath": "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\BottomhalfCore\\BottomhalfCore.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\CoreServiceLayer\\CoreServiceLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\CoreServiceLayer\\CoreServiceLayer.csproj",
+        "projectName": "CoreServiceLayer",
+        "projectPath": "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\CoreServiceLayer\\CoreServiceLayer.csproj",
+        "packagesPath": "C:\\Users\\IstiyaQ\\.nuget\\packages\\",
+        "outputPath": "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\CoreServiceLayer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\IstiyaQ\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\BottomhalfCore\\BottomhalfCore.csproj": {
+                "projectPath": "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\BottomhalfCore\\BottomhalfCore.csproj"
+              },
+              "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\CommonModal\\CommonModal.csproj": {
+                "projectPath": "E:\\Projects\\SchoolInMind\\SchoolInMindServer\\CommonModal\\CommonModal.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.7.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.7.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

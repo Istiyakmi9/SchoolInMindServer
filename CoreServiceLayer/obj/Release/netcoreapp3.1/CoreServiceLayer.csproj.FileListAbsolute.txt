@@ -1,0 +1,3 @@
+E:\Projects\EdServerCore\SchoolInMindServer\CoreServiceLayer\obj\Release\netcoreapp3.1\CoreServiceLayer.AssemblyInfoInputs.cache
+E:\Projects\EdServerCore\SchoolInMindServer\CoreServiceLayer\obj\Release\netcoreapp3.1\CoreServiceLayer.AssemblyInfo.cs
+E:\Projects\EdServerCore\SchoolInMindServer\CoreServiceLayer\obj\Release\netcoreapp3.1\CoreServiceLayer.csproj.CoreCompileInputs.cache

@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>63a754e5-248c-4db1-8b1f-6c964ce8ce41</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="MiddlewareServices\Interface\**" />
+    <Compile Remove="MiddlewareServices\Src\**" />
+    <Content Remove="MiddlewareServices\Interface\**" />
+    <Content Remove="MiddlewareServices\Src\**" />
+    <EmbeddedResource Remove="MiddlewareServices\Interface\**" />
+    <EmbeddedResource Remove="MiddlewareServices\Src\**" />
+    <None Remove="MiddlewareServices\Interface\**" />
+    <None Remove="MiddlewareServices\Src\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\ReadScriptFile.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.14" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BottomhalfCore\BottomhalfCore.csproj" />
+    <ProjectReference Include="..\CommonModal\CommonModal.csproj" />
+    <ProjectReference Include="..\CoreServiceLayer\CoreServiceLayer.csproj" />
+  </ItemGroup>
+
+
+</Project>

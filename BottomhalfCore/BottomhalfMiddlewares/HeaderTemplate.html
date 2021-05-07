@@ -1,0 +1,489 @@
+﻿<!DOCTYPE html>
+<html lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+
+<head>
+    <meta charset='utf-8' />
+    <title>Bottomhalf API Manager</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: .9rem;
+            line-height: 1.7;
+        }
+
+        .text-center {
+            text-align: center !important;
+        }
+
+        .get-box {
+            padding: 10px 20px;
+            background: #fbfbfb;
+        }
+
+        .pl-4 {
+            padding-left: 2rem;
+        }
+
+        .pl-2 {
+            padding-left: 1rem;
+        }
+
+        .col-1 {
+            width: 10%;
+        }
+
+        .col-2 {
+            width: 20%;
+        }
+
+        .col-3 {
+            width: 30%;
+        }
+
+        .col-4 {
+            width: 40%;
+        }
+
+        .col-5 {
+            width: 50%;
+        }
+
+        .col-6 {
+            width: 60%;
+        }
+
+        .col-7 {
+            width: 70%;
+        }
+
+        .col-8 {
+            width: 80%;
+        }
+
+        .col-9 {
+            width: 90%;
+        }
+
+        .col-10 {
+            width: 100%;
+        }
+
+        .row {
+            display: flex !important;
+        }
+
+        .header-title {
+            background-color: goldenrod;
+            color: white;
+            height: 200px;
+            clip-path: polygon(0% 0%, 100% 0, 100% 80%, 0 100%);
+        }
+
+        .body {
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        li.link {
+            text-decoration: none;
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .link-dv {
+            background-color: #f9f9f9;
+            border-radius: 4px 4px 0px 0px;
+            padding: 4px;
+            border: 1px solid #444;
+        }
+
+        .link-body {
+            display: none;
+            border: 1px solid #d9d9d9;
+            border-radius: 0px 0px 4px 4px;
+        }
+
+        .enable-dv {
+            display: block !important;
+        }
+
+        .link-item {
+            cursor: pointer;
+            display: inline-block;
+            padding-left: 15px;
+        }
+
+            .link-item:hover {
+                font: 1rem;
+            }
+
+        .link-item {
+            cursor: pointer;
+            display: inline-block;
+            padding-left: 15px;
+        }
+
+            .link-item:hover {
+                font: 1rem;
+            }
+
+        .btn {
+            border: 1px solid #444;
+            padding: 8px 34px;
+            border-radius: 4px;
+            color: #eee;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .btn-default {
+            color: #444;
+        }
+
+        .btn-green {
+            border: 1px solid #65952e;
+            background-color: #65952e;
+        }
+
+        .btn-dark {
+            border: 1px solid #444;
+            background-color: #444;
+        }
+
+        .btn-yellow {
+            border: 1px solid #ffa92a;
+            background-color: #ffa92a;
+        }
+
+        .btn-red {
+            border: 1px solid #d06d4d;
+            background-color: #d06d4d;
+        }
+
+        .btn-blue {
+            border: 1px solid #4c4cc0;
+            background-color: #4c4cc0;
+        }
+
+        .btn-lightgray {
+            border: 1px solid #444;
+            background-color: #eee;
+            color: #444;
+        }
+
+        .row div {
+            display: inline-block;
+        }
+
+        .d-inline {
+            display: inline !important;
+        }
+
+        .d-inline-block {
+            display: inline-block !important;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .col-10 {
+            width: 88%;
+        }
+
+        .p-2 {
+            padding: 12px;
+        }
+
+        .pt-1 {
+            padding-top: 1rem !important;
+        }
+
+        .pb-1 {
+            padding-bottom: 1rem !important;
+        }
+
+        .m-2 {
+            margin: 1rem !important;
+        }
+
+        .mt-2 {
+            margin-top: 1rem !important;
+        }
+
+        .mr-1 {
+            margin-top: .6rem !important;
+        }
+
+        .d-none {
+            display: none !important;
+        }
+
+        .color-dark {
+            color: #444 !important;
+        }
+
+        .border-bottom {
+            border-bottom: 1px solid #d9d9d9;
+        }
+
+        .col-12 {
+            padding: 1rem;
+        }
+
+        .p-0 {
+            padding: 0px !important;
+        }
+
+        .content-body {
+            background: #eee;
+            border-top: 1px solid #d9d9d9;
+            padding: 26px !important;
+        }
+
+        .col-2 {
+            width: 8%;
+        }
+
+        .d-block {
+            display: block;
+        }
+
+        .user-value {
+            font-size: 12px;
+            width: 100%;
+            min-height: 280px;
+            padding: 10px;
+            border: none;
+            resize: none;
+            border-radius: 4px;
+            outline: none;
+            background: hsla(0, 0%, 100%, .8);
+            font-family: monospace;
+            font-weight: 600;
+            color: #3b4151;
+        }
+
+        .form-control {
+            border: 1px solid #d9d9d9;
+            padding: 6px;
+            border-radius: 4px;
+            width: 100%;
+            color: #444;
+        }
+
+        .form-group {
+            margin: 1rem 0px;
+        }
+
+        .col-3 {
+            width: 10%;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .field-box {
+            margin-left: 1rem;
+            width: 100%;
+        }
+
+        .table {
+            width: 100%;
+            padding: 0 10px;
+            border-collapse: collapse;
+        }
+
+            .table th {
+                border-bottom: 1px solid #444;
+            }
+
+                .table th:first-child {
+                    width: 12%;
+                }
+
+        .f-cell {
+            margin-top: 1rem;
+        }
+
+        .f-cell-b {
+            margin-bottom: 1rem;
+        }
+
+        .control-dd {
+            padding: 6px 24px;
+            border-radius: 4px;
+        }
+
+        .col-7 {
+            width: 70%;
+        }
+
+        .mr-2 {
+            margin-right: 10px;
+        }
+
+        .method-sec {
+            font-size: 20px;
+            font-weight: 500;
+            border-bottom: 2px solid #c6b1b1;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <script>
+        var Origin = '';
+        var Method = '';
+        var Url = '';
+        var http = null;
+        var $current = null;
+        var BindingData = "[[Data]]";
+
+        var response = {
+            statusCode: 0,
+            statusText: '',
+            responseText: ''
+        };
+
+        function ManageCurrentAPI(UrlPath) {
+            if (UrlPath === null || UrlPath === "") {
+                Url = event.currentTarget.closest('div[name="link-dv"]').querySelector('a[name="link-item"]').textContent;
+                if (Url !== undefined && Url !== null) {
+                    Url = Url.trim();
+                }
+            } else {
+                Url = UrlPath;
+            }
+            Origin = location.origin;
+            Method = event.currentTarget.textContent;
+            var $dv = event.currentTarget.closest('li[name="link"]').querySelector('div[name="link-body"]');
+            if ($dv !== null) {
+                if ($dv.classList.contains('enable-dv'))
+                    $dv.classList.remove('enable-dv');
+                else
+                    $dv.classList.add('enable-dv');
+            }
+        }
+
+        function EnableRequest() {
+            var $btn = event.currentTarget.closest('li').querySelector('button[name="btn-invoke"]');
+            if ($btn != null) {
+                $btn.classList.remove('d-none');
+            }
+        }
+
+        function CancelRequest() {
+
+        }
+
+        function Invoke() {
+            $current = event.currentTarget.closest('li');
+            switch (Method) {
+                case 'GET': Get({
+                    url: Origin + "/" + Url,
+                });
+                    break;
+                case 'POST':
+                    var value = $current.querySelector('textarea[name="post-data"]').value.replace(/\'/g, "\"");
+                    var requestType = $current.querySelector('select[name="contenttype"]').value;
+                    Post({
+                        url: Origin + "/" + Url,
+                        parameter: JSON.parse(value),
+                        contentType: requestType
+                    });
+                    break;
+            }
+        }
+
+        function Post(param) {
+            http = new XMLHttpRequest();
+            http.onreadystatechange = function () {
+                if (http.readyState === XMLHttpRequest.DONE) {
+                    var status = http.status;
+                    if (status === 0 || (status >= 200 && status < 400)) {
+                        response = {
+                            statusCode: http.status,
+                            statusText: http.statusText,
+                            responseText: http.responseText
+                        }
+                    } else {
+
+                    }
+
+                    $current.querySelector('div[name="status-code"]').innerHTML = http.status;
+                    $current.querySelector('div[name="status-text"]').innerHTML = http.statusText;
+                    if (http.responseText !== null && http.responseText.trim() !== '') {
+                        $current.querySelector('div[name="response-text"]').classList.remove('d-none');
+                        $current.querySelector('div[name="response-text"]').querySelector('textarea').value = http.responseText;
+                    }
+
+                    $current.querySelector('div[name="response-section"]').classList.remove('d-none');
+                } else {
+
+                }
+            }
+
+            http.open('POST', param.url);
+            if (param.contentType !== null && param.contentType !== "") {
+                http.setRequestHeader('accept', `${param.contentType}, text/plain, */*`);
+                http.setRequestHeader('content-type', `${param.contentType}`);
+            }
+
+            if (param.parameter !== null && param.parameter !== "")
+                http.send(JSON.stringify(param.parameter));
+            else
+                http.send();
+        }
+
+        function Get(param) {
+            var http = new XMLHttpRequest();
+            http.onreadystatechange = function () {
+                if (http.readyState === XMLHttpRequest.DONE) {
+                    var status = http.status;
+                    if (status === 0 || (status >= 200 && status < 400)) {
+
+                    } else {
+
+                    }
+                } else {
+
+                }
+            }
+
+            http.open('GET', param.url);
+            http.send();
+        }
+    </script>
+</head>
+
+<body>
+    <div class='header'>
+        <div class='header-title'>
+            Bottomhalf API Manager
+        </div>
+    </div>
+    <div class='body'>
+        <div class="row pt-1 pb-1">
+            <div class="col-4">
+                <label>Protocol</label>
+                <select class="control-dd" name="protocol">
+                    <option class="http">HTTP</option>
+                    <option class="https">HTTPS</option>
+                </select>
+            </div>
+            <div class="col-6 text-right">
+                <button class="btn btn-default">Headers</button>
+            </div>
+        </div>
+        [[LINK-DATA]]
+    </div>
+</body>
+</html>
