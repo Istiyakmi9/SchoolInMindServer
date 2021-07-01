@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace BottomhalfCore.DatabaseLayer.MySql.Code
 {
@@ -31,6 +32,73 @@ namespace BottomhalfCore.DatabaseLayer.MySql.Code
                 con.ConnectionString = ConnectionString;
             }
         }
+
+
+
+        #region NEW DYNAMIC DATABASE INTERACTION CODE
+
+        public T Get<T>(string ProcedureName)
+        {
+            (T Item, string result) = Execute<T>(ProcedureName, null, false);
+            return Item;
+        }
+
+        public T Get<T>(string ProcedureName, DbParam[] parameters, bool IsOutputParamter)
+        {
+            (T Item, string result) = Execute<T>(ProcedureName, parameters, IsOutputParamter);
+            return Item;
+        }
+
+        private (T, string) Execute<T>(string ProcedureName, DbParam[] param, bool OutParam)
+        {
+            try
+            {
+                string value = default(string);
+                T Result = default(T);
+                using (con = new MySqlConnection())
+                {
+                    using (cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = con;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = ProcedureName;
+                        if (param != null)
+                            cmd = AddCommandParameter(cmd, param);
+                        if (OutParam)
+                            cmd.Parameters.Add("_ProcessingResult", MySqlDbType.VarChar, 250).Direction = ParameterDirection.Output;
+
+                        da = new MySqlDataAdapter();
+                        da.SelectCommand = cmd;
+                        ds = new DataSet();
+                        da.Fill(ds);
+                        if (OutParam)
+                            value = cmd.Parameters["_ProcessingResult"].Value.ToString();
+                        if (ds.Tables.Count > 0)
+                        {
+                            if (typeof(T) != typeof(DataSet))
+                            {
+                                var ResultList = Converter.ToList<T>(ds.Tables[0]);
+                                Result = ResultList.FirstOrDefault();
+                            }
+                        }
+                    }
+                }
+
+                return (Result, value);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open || con.State == ConnectionState.Broken)
+                    con.Close();
+            }
+        }
+
+        #endregion
+
 
         public DataSet FetchResult(string ProcedureName)
         {

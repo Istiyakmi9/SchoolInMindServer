@@ -15,6 +15,7 @@ namespace ServiceLayer.Interface
         string ApplicationTimeSettingService(TimeSettingModal timeSettingModal);
         string FacultyWidthSubjectService(string SubjectUid);
         string AllSubjectService(SearchModal searchModal);
+        string DeleteSchoolPeriodSettingService(RuleBook ruleBook);
         string SaveAssignedTimetableService(AssignTeacher ObjAssignTeacher);
         string GetSchoolEvents(string SearchStr);
         string SaveSchoolCalendarChangesService(SchoolCalendar ObjSchoolCalendar);

@@ -10,7 +10,6 @@ using System;
 
 namespace SchoolInMindServer.Controllers
 {
-    [Transient]
     public class EventsController : BaseController
     {
         // GET: Events
@@ -143,6 +142,14 @@ namespace SchoolInMindServer.Controllers
         public IResponse<ApiResponse> AllSubjects([FromBody] SearchModal searchModal)
         {
             string Result = eventService.AllSubjectService(searchModal);
+            return BuildResponse(Result, System.Net.HttpStatusCode.OK);
+        }
+
+        [HttpDelete]
+        [Route("api/Events/DeleteSchoolPeriodSetting")]
+        public IResponse<ApiResponse> DeleteSchoolPeriodSetting([FromBody] RuleBook ruleBook)
+        {
+            var Result = eventService.DeleteSchoolPeriodSettingService(ruleBook);
             return BuildResponse(Result, System.Net.HttpStatusCode.OK);
         }
     }

@@ -3,6 +3,7 @@ using BottomhalfCore.DatabaseLayer.Common.Code;
 using BottomhalfCore.Model;
 using BottomhalfCore.Services.Code;
 using CommonModal.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,6 +13,7 @@ using System.Linq;
 namespace SchoolInMindServer.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class WeatherForecastController : BaseController
     {

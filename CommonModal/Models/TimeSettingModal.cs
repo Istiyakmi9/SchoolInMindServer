@@ -8,6 +8,7 @@ namespace CommonModal.Models
     {
         public string SchoolStartTime { set; get; }
         public int TotalPeriods { set; get; }
+        public int PeriodDurationInMinutes { set; get; }
         public int LunchAfterPeriod { set; get; }
         public List<RuleBook> RuleBookDetail { set; get; }
         public string LunchTime { set; get; }
@@ -30,7 +31,6 @@ namespace CommonModal.Models
         public string TimingDetailUid { set; get; }
         public string RulebookUid { set; get; }
         public string TimingFor { set; get; }
-        public int TimingCode { set; get; }
         public int DurationInHrs { set; get; }
         public int DurationInMin { set; get; }
         public string AdminId { set; get; }

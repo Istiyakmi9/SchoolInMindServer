@@ -19,5 +19,8 @@ namespace BottomhalfCore.DatabaseLayer.Common.Code
         DataSet CommonadBuilderBulkInsertUpdate(string SelectQuery, string TableName);
         List<T> GetDataSet<T>(string ProcedureName, DbParam[] param, ref string PrcessingStatus, bool OutParam = false);
         (int, int) InsertUpdateJsonBatch(string ProcedureName, DataTable table);
+
+        T Get<T>(string ProcedureName);
+        T Get<T>(string ProcedureName, DbParam[] parameters, bool IsOutputParamter);
     }
 }

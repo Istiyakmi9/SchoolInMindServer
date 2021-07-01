@@ -1,4 +1,6 @@
 ﻿using BottomhalfCore.DatabaseLayer.Common.Code;
+using BottomhalfCore.Flags;
+using BottomhalfCore.Services.Code;
 using CommonModal.Models;
 using CommonModal.ORMModels;
 using Newtonsoft.Json;
@@ -6,6 +8,7 @@ using ServiceLayer.Interface;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace CoreServiceLayer.Implementation
 {
@@ -121,6 +124,7 @@ namespace CoreServiceLayer.Implementation
                     new DbParam(ruleBooks[0].RulebookUid, typeof(System.String), "_RulebookUid"),
                     new DbParam(ruleBooks[0].RuleName, typeof(System.String), "_RuleName"),
                     new DbParam(timeSettingModal.TotalPeriods, typeof(System.String), "_TotalNoOfPeriods"),
+                    new DbParam(timeSettingModal.PeriodDurationInMinutes, typeof(System.String), "_PeriodDurationInMinutes"),
                     new DbParam(timeSettingModal.SchoolStartTime, typeof(System.String), "_SchoolStartTime"),
                     new DbParam(timeSettingModal.LunchAfterPeriod, typeof(System.Int32), "_LunchAfterPeriod"),
                     new DbParam(timeSettingModal.LunchTime, typeof(System.String), "_LunchBreakTime"),
@@ -129,56 +133,41 @@ namespace CoreServiceLayer.Implementation
                     new DbParam(userDetail.schooltenentId, typeof(System.String), "_TanentUid"),
                     new DbParam(userDetail.UserId, typeof(System.String), "_AdminId")
                 };
-                DataSet RuleBookDs = db.GetDataset("sp_TimetableSetting_InsUpd", param);
-                if (RuleBookDs != null && RuleBookDs.Tables.Count > 0)
+                var TimetableRuleUid = db.ExecuteNonQuery("sp_TimetableSetting_InsUpd", param, true);
+                if (!string.IsNullOrEmpty(TimetableRuleUid))
                 {
-                    string TimetableRuleUid = "";
-                    string LunchRuleUid = "";
-                    int RuleCode = 0;
-                    foreach (DataRow row in RuleBookDs.Tables[0].Rows)
+                    int i = 1;
+                    if (IsFormUpdate)
                     {
-                        RuleCode = Convert.ToInt32(row["RuleCode"]);
-                        if (RuleCode == 1)
+                        DbParam[] timeSettingParam = new DbParam[]
                         {
-                            TimetableRuleUid = row["RulebookUid"].ToString();
-                        }
-                        else if (RuleCode == 2)
+                            new DbParam(TimetableRuleUid, typeof(System.String), "_RulebookUid")
+                        };
+                        DataSet TimeSettingResultSet = db.GetDataset("sp_Rulebook_GetByUid", param);
+                        if (TimeSettingResultSet.Tables.Count > 0)
                         {
-                            LunchRuleUid = row["RulebookUid"].ToString();
+                            var TimingDetailModel = Converter.ToList<TimingModal>(TimeSettingResultSet.Tables[0]);
+                            timeSettingModal.TimingDetails.ForEach(item =>
+                            {
+                                item.RulebookUid = TimetableRuleUid;
+                                item.TimingDetailUid = TimingDetailModel.Where(x => x.TimingFor == item.TimingFor).First().TimingDetailUid;
+                                item.AdminId = userDetail.UserId;
+                            });
                         }
                     }
-
-                    if (!IsFormUpdate)
+                    else
                     {
-                        int i = 1;
                         timeSettingModal.TimingDetails.ForEach(item =>
                         {
-                            if (item.TimingFor.ToLower() == "lunch")
-                                item.RulebookUid = LunchRuleUid;
-                            else
-                                item.RulebookUid = TimetableRuleUid;
+                            item.RulebookUid = TimetableRuleUid;
                             item.TimingDetailUid = item.TimingDetailUid + i++;
                             item.AdminId = userDetail.UserId;
                         });
                     }
-                    //if (beanContext == null) beanContext = BeanContext.GetInstance();
-                    //DataSet ds = beanContext.ConvertToDataSet<TimingModal>(timeSettingModal.TimingDetails);
-                    //if (ds.Tables[0].Rows.Count > 0)
-                    //    db.InsertUpdateBatchRecord("sp_TimingDetail_InsUpd", ds.Tables[0], true);
 
-                    foreach (var Item in timeSettingModal.TimingDetails)
-                    {
-                        param = new DbParam[]
-                        {
-                            new DbParam(Item.TimingDetailUid, typeof(System.String), "_TimingDetailUid"),
-                            new DbParam(Item.RulebookUid, typeof(System.String), "_RulebookUid"),
-                            new DbParam(Item.TimingFor, typeof(System.String), "_TimingFor"),
-                            new DbParam(Item.DurationInHrs, typeof(System.Int32), "_DurationInHrs"),
-                            new DbParam(Item.DurationInMin, typeof(System.Int32), "_DurationInMin"),
-                            new DbParam(userDetail.UserId, typeof(System.String), "_AdminId")
-                        };
-                        OutParam = db.ExecuteNonQuery("sp_TimingDetail_InsUpd", param, true);
-                    }
+                    var TimeSettingDataSet = Converter.ToDataSet<TimingModal>(timeSettingModal.TimingDetails);
+                    if (TimeSettingDataSet != null)
+                        db.InsertUpdateBatchRecord("sp_TimingDetail_InsUpd", TimeSettingDataSet.Tables[0]);
                 }
             }
 
@@ -253,6 +242,16 @@ namespace CoreServiceLayer.Implementation
                 new DbParam(userDetail.UserId, typeof(System.String), "_AdminId")
             };
             OutParam = db.ExecuteNonQuery("sp_Timetable_InsUpt", param, true);
+            return OutParam;
+        }
+
+        public string DeleteSchoolPeriodSettingService(RuleBook ruleBook)
+        {
+            DbParam[] param = new DbParam[]
+            {
+                new DbParam(ruleBook.RulebookUid, typeof(System.String), "_rulebookUid")
+            };
+            OutParam = db.ExecuteNonQuery("sp_SchoolPeriodTiming_DelById", param, false);
             return OutParam;
         }
     }

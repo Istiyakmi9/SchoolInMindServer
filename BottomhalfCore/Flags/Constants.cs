@@ -1,14 +1,13 @@
-﻿using BottomhalfCore.Annotations;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BottomhalfCore.Flags
+﻿namespace BottomhalfCore.Flags
 {
     public class Constants
     {
-        public const string Transient = "Transient";
-        public const string Scoped = "Scoped";
-        public const string SingleTon = "SingleTon";
+        public static string
+                        SchoolTiming = "school timings",
+                        Lunch = "lunch",
+                        Transient = "Transient",
+                        Scoped = "Scoped",
+                        SingleTon = "SingleTon";
     }
 }
+
