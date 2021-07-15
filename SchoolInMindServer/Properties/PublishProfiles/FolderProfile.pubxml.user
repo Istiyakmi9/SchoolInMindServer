@@ -7,5 +7,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_PublishTargetUrl>E:\Projects\SchoolInMind\Published\SimServer</_PublishTargetUrl>
+    <History>True|2021-07-02T04:15:23.4961702Z;</History>
   </PropertyGroup>
 </Project>

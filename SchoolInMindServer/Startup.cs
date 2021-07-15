@@ -90,6 +90,7 @@ namespace SchoolInMindServer
             }, true, false, connectionString);
             services.AddHttpContextAccessor();
             services.Configure<MySetting>(config => Configuration.GetSection("IntSetting").Bind(config));
+            services.AddScoped<CurrentSession>();
 
             services.AddCors(options =>
             {

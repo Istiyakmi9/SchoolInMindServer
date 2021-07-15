@@ -2,6 +2,7 @@
 using BottomhalfCore.Services.Code;
 using CommonModal.Models;
 using CommonModal.ORMModels;
+using CommonModal.ProcedureModel;
 using Newtonsoft.Json;
 using ServiceLayer.Interface;
 using System;
@@ -20,7 +21,7 @@ namespace CoreServiceLayer.Implementation
         public AdminMasterService(IDb db, ValidateModalService validateModalService, CurrentSession currentSession)
         {
             this.db = db;
-            userDetail = currentSession.CurrentUserDetail;
+            userDetail = new UserDetail { schooltenentId = "1617971649666" };
             this.validateModalService = validateModalService;
         }
 
