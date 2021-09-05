@@ -17,11 +17,11 @@ namespace CoreServiceLayer.Implementation
         private ICacheManager<CacheManager> cacheManager;
         private readonly IDb db;
         private readonly ICommonService<CommonService> commonService;
-        public AttendenceService(CommonService commonService)
+        public AttendenceService(CommonService commonService, CurrentSession currentSession)
         {
             this.commonService = commonService;
             this.cacheManager = CacheManager.GetInstance();
-            userDetail = cacheManager.Get("userdetail") as UserDetail;
+            userDetail = currentSession.CurrentUserDetail;
         }
 
         public string GetAttendenceRecordService(AttendenceReport objAttendenceReport)
@@ -144,7 +144,7 @@ namespace CoreServiceLayer.Implementation
                         if (ds.Tables.Count > 1)
                         {
                             //string MonthName = null;
-                            int WorkingYear = userDetail.AccedemicStartYear;
+                            int WorkingYear = DateTime.Now.Year;
                             MonthlyAttrPercentage = new Dictionary<string, Double>();
 
                             TotalDays = 0;
@@ -219,7 +219,7 @@ namespace CoreServiceLayer.Implementation
                 new DbParam(FromDate, typeof(System.DateTime), "_fromMonth"),
                 new DbParam(ToDate, typeof(System.DateTime), "_toMonth"),
                 new DbParam(ClassDetailUid, typeof(System.String), "_classDetailId"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentUid")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentUid")
             };
             DataSet ds = db.GetDataset("sp_attendencereport_allStudByDate", param);
             objAttendenceReportList = CreateAttdenceRowSet(ds, FromDate, ToDate);
@@ -237,7 +237,7 @@ namespace CoreServiceLayer.Implementation
                 new DbParam(searchModal.PageIndex, typeof(System.String), "_pageIndex"),
                 new DbParam(searchModal.PageSize, typeof(System.String), "_pageSize"),
                 new DbParam(ClassSectionFilter, typeof(System.String), "_ClassSectionFilter"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentId")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentId")
             };
             DataSet ds = db.GetDataset("sp_Attendence_FullReportFilter", param);
             if (ds.Tables.Count == 2)
@@ -251,7 +251,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(ClassDetailUid, typeof(System.String), "_ClassDetailId"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentId")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentId")
             };
             DataSet ds = db.GetDataset("sp_StudentDetail_PaymentInfo", param);
             Result = JsonConvert.SerializeObject(ds);
@@ -264,8 +264,8 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(PayeeUid, typeof(System.String), "_PayeeUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentId"),
-                new DbParam(userDetail.AccedemicStartYear, typeof(System.Int32), "_ForYear"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentId"),
+                new DbParam(DateTime.Now.Year, typeof(System.Int32), "_ForYear"),
                 new DbParam(1, typeof(System.Int32), "_UserCode")
             };
             DataSet ds = db.GetDataset("sp_StudentPaymentDetail_Sel", param);
@@ -281,7 +281,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(ClassDetailUid, typeof(System.String), "_classDetailUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentUid")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentUid")
             };
             DataSet ds = db.GetDataset(ProcedureName, param);
             return ds;

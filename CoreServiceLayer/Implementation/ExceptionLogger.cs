@@ -1,5 +1,6 @@
 ﻿using BottomhalfCore.DatabaseLayer.Common.Code;
 using BottomhalfCore.FactoryContext;
+using CommonModal.Models;
 using CommonModal.ProcedureModel;
 using ServiceLayer.Interface;
 using System;
@@ -10,9 +11,9 @@ namespace CoreServiceLayer.Implementation
     {
         private readonly IDb db;
 
-        public ExceptionLogger(IDb db, UserDetail userDetail)
+        public ExceptionLogger(IDb db, CurrentSession currentSession)
         {
-            this.userDetail = userDetail;
+            this.userDetail = currentSession.CurrentUserDetail;
             this.db = db;
         }
 
@@ -33,8 +34,8 @@ namespace CoreServiceLayer.Implementation
                     new DbParam(DestroyedDateTime, typeof(System.DateTime), "_DestroyedOn"),
                     new DbParam(IsException, typeof(System.Boolean), "_IsException"),
                     new DbParam(ExceptionMessage, typeof(System.String), "_ExceptionMessage"),
-                    new DbParam(this.userDetail.FirstName + " " + this.userDetail.LastName, typeof(System.String), "_UserName"),
-                    new DbParam(this.userDetail.MobileNo, typeof(System.String), "_UserMobileNo")
+                    new DbParam("", typeof(System.String), "_UserName"),
+                    new DbParam(this.userDetail.Mobile, typeof(System.String), "_UserMobileNo")
                 };
                 var Result = db.ExecuteNonQuery("sp_TrackSessionObject_InsUpd", SessionParam, true);
                 if (!string.IsNullOrEmpty(Result) && (Convert.ToInt32(Result) == 100 || Convert.ToInt32(Result) == 101))

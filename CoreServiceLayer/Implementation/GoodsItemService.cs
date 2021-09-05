@@ -80,7 +80,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(GoodsItemUid, typeof(System.String), "_goodsItemUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentUid"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentUid"),
             };
             DataSet ds = db.GetDataset("sp_GoodsItem_ByUid", param);
             if (ds != null && ds.Tables.Count > 0)
@@ -94,7 +94,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(ObjGoods.ExistingVendorUid, typeof(System.String), "_ExistingVendorUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentId"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentId"),
                 new DbParam(ObjGoods.SellerFirstName, typeof(System.String), "_SellerFirstName"),
                 new DbParam(ObjGoods.SellerLastName, typeof(System.String), "_SellerLastName"),
                 new DbParam(ObjGoods.ShopName, typeof(System.String), "_ShopName"),
@@ -120,7 +120,7 @@ namespace CoreServiceLayer.Implementation
             string ResultSet = null;
             DbParam[] param = new DbParam[]
             {
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentUid")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentUid")
             };
 
             string ProcessingStatus = string.Empty;
@@ -149,7 +149,7 @@ namespace CoreServiceLayer.Implementation
                 DbParam[] param = new DbParam[]
                 {
                     new DbParam(ObjClient.ClientUid , typeof(System.String), "_ClientUid"),
-                    new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentId"),
+                    new DbParam(userDetail.TenentId, typeof(System.String), "_TenentId"),
                     new DbParam(ObjClient.GSTIN, typeof(System.String), "_GSTINDetail"),
                     new DbParam(ObjClient.AdharNumber, typeof(System.String), "_AdharNumber"),
                     new DbParam(ObjClient.PersonName, typeof(System.String), "_PersonName"),
@@ -197,7 +197,7 @@ namespace CoreServiceLayer.Implementation
                 DbParam[] param = new DbParam[]
                 {
                     new DbParam(ObjGoodsItem.GoodsItemUid, typeof(System.String), "_GoodsItemUid"),
-                    new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentId"),
+                    new DbParam(userDetail.TenentId, typeof(System.String), "_TenentId"),
                     new DbParam(ObjGoodsItem.GoodsUid, typeof(System.String), "_GoodsUid"),
                     new DbParam(ObjGoodsItem.Item, typeof(System.String), "_Item"),
                     new DbParam(ObjGoodsItem.ItemName, typeof(System.String), "_ItemName"),

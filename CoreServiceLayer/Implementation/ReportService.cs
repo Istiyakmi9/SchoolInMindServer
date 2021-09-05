@@ -63,7 +63,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(StudentUid, typeof(System.String), "_StudentUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentId"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentId"),
             };
 
             DataSet ds = db.GetDataset("sp_ParentDetail_ByStudentUid", param);

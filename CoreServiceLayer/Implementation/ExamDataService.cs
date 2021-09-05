@@ -28,7 +28,7 @@ namespace CoreServiceLayer.Implementation
                 DbParam[] param = new DbParam[]
                 {
                     new DbParam(Class, typeof(System.String), "_Class"),
-                    new DbParam(userDetail.schooltenentId, typeof(System.String), "_TanentId"),
+                    new DbParam(userDetail.TenentId, typeof(System.String), "_TanentId"),
                     new DbParam(ExamDescriptionUid, typeof(System.String), "_ExamDescriptionUid")
                 };
                 ResultSet = db.GetDataset("sp_ExamDetails_Sel", param);
@@ -64,7 +64,7 @@ namespace CoreServiceLayer.Implementation
                 foreach (var Item in examdetails)
                 {
                     Item.AdminUid = this.userDetail.UserId;
-                    Item.TanentUid = this.userDetail.schooltenentId;
+                    Item.TanentUid = this.userDetail.TenentId;
                 }
 
                 DataSet ds = this.beanContext.ConvertToDataSet<Examdetails>(examdetails);

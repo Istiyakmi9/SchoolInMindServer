@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AuthenticationToken\AuthenticationToken.csproj" />
     <ProjectReference Include="..\BottomhalfCore\BottomhalfCore.csproj" />
     <ProjectReference Include="..\CommonModal\CommonModal.csproj" />
     <ProjectReference Include="..\CoreServiceLayer\CoreServiceLayer.csproj" />

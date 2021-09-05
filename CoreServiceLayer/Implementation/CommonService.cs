@@ -46,7 +46,7 @@ namespace CoreServiceLayer.Implementation
             string Result = null;
             DbParam[] param = new DbParam[]
             {
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentUid"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentUid"),
                 new DbParam(Class, typeof(System.Int32), "_Class"),
                 new DbParam(Section, typeof(System.String), "_Section")
             };
@@ -68,7 +68,7 @@ namespace CoreServiceLayer.Implementation
             {
                 new DbParam(MobileNos, typeof(System.String), "_MobileNos"),
                 new DbParam(EmailIds, typeof(System.String), "_EmailIds"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentUid")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentUid")
             };
 
             var Ds = db.GetDataset("sp_Validate_MobileNos_And_EmailIds", param);

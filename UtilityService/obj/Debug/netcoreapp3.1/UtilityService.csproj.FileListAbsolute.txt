@@ -1,0 +1,9 @@
+E:\Projects\SchoolInMind\SchoolInMindServer\UtilityService\bin\Debug\netcoreapp3.1\UtilityService.deps.json
+E:\Projects\SchoolInMind\SchoolInMindServer\UtilityService\bin\Debug\netcoreapp3.1\UtilityService.dll
+E:\Projects\SchoolInMind\SchoolInMindServer\UtilityService\bin\Debug\netcoreapp3.1\UtilityService.pdb
+E:\Projects\SchoolInMind\SchoolInMindServer\UtilityService\obj\Debug\netcoreapp3.1\UtilityService.csprojAssemblyReference.cache
+E:\Projects\SchoolInMind\SchoolInMindServer\UtilityService\obj\Debug\netcoreapp3.1\UtilityService.AssemblyInfoInputs.cache
+E:\Projects\SchoolInMind\SchoolInMindServer\UtilityService\obj\Debug\netcoreapp3.1\UtilityService.AssemblyInfo.cs
+E:\Projects\SchoolInMind\SchoolInMindServer\UtilityService\obj\Debug\netcoreapp3.1\UtilityService.csproj.CoreCompileInputs.cache
+E:\Projects\SchoolInMind\SchoolInMindServer\UtilityService\obj\Debug\netcoreapp3.1\UtilityService.dll
+E:\Projects\SchoolInMind\SchoolInMindServer\UtilityService\obj\Debug\netcoreapp3.1\UtilityService.pdb

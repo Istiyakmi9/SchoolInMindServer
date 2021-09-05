@@ -20,13 +20,10 @@ namespace CoreServiceLayer.Implementation
         private readonly IValidateModalService<ValidateModalService> validateModalService;
         private readonly IFileService<FileService> fileService;
         private readonly IDb db;
-        private readonly BeanContext beanContext;
 
-        public RegistrationService(IDb db, UserDetail userDetail, ValidateModalService validateModalService, FileService fileService, CurrentSession currentSession)
+        public RegistrationService(IDb db, ValidateModalService validateModalService, FileService fileService, CurrentSession currentSession)
         {
             this.db = db;
-            this.beanContext = BeanContext.GetInstance();
-            this.userDetail = userDetail;
             this.currentSession = currentSession;
             this.fileService = fileService;
             this.validateModalService = validateModalService;
@@ -55,7 +52,7 @@ namespace CoreServiceLayer.Implementation
                 DbParam[] param = new DbParam[]
                 {
                     new DbParam(StaffUid, typeof(System.String), "_StaffMemberUid"),
-                    new DbParam(userDetail.schooltenentId, typeof(System.String), "_schooltenentid"),
+                    new DbParam(userDetail.TenentId, typeof(System.String), "_schooltenentid"),
                     new DbParam(registrationFormData.FirstName, typeof(System.String), "_FirstName"),
                     new DbParam(registrationFormData.LastName, typeof(System.String), "_LastName"),
                     new DbParam(registrationFormData.Gender, typeof(System.Boolean), "_Gender"),
@@ -129,7 +126,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(ParentDetails.ParentDetailId, typeof(System.String), "_ParentDetailUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentUid"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentUid"),
                 new DbParam(ParentDetails.FatherFirstName, typeof(System.String), "_FatherFirstName"),
                 new DbParam(ParentDetails.FatherLastName, typeof(System.String), "_FatherLastName"),
                 new DbParam(ParentDetails.FatherMobileno, typeof(System.String), "_FatherMobileno"),
@@ -161,7 +158,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(StaffUid, typeof(System.String), "_StaffMemberUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_schooltenentid"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_schooltenentid"),
                 new DbParam(registrationFormData.FirstName, typeof(System.String), "_FirstName"),
                 new DbParam(registrationFormData.LastName, typeof(System.String), "_LastName"),
                 new DbParam(registrationFormData.Gender, typeof(System.Boolean), "_Gender"),
@@ -292,7 +289,7 @@ namespace CoreServiceLayer.Implementation
                 DbParam[] param = new DbParam[]
                 {
                     new DbParam(registrationFormData.StudentUid, typeof(System.String), "_studentUid"),
-                    new DbParam(userDetail.schooltenentId, typeof(System.String), "_schooltenentId"),
+                    new DbParam(userDetail.TenentId, typeof(System.String), "_schooltenentId"),
                     new DbParam(registrationFormData.ParentDetailId, typeof(System.String), "_parentDetailId"),
                     new DbParam(registrationFormData.ClassDetailUid, typeof(System.String), "_classDetailId"),
                     new DbParam(registrationFormData.FirstName, typeof(System.String), "_FirstName"),
@@ -427,7 +424,7 @@ namespace CoreServiceLayer.Implementation
             {
                 new DbParam(RegistrationNo, typeof(System.String), "_registrationNo"),
                 new DbParam(CompleteReg, typeof(System.Boolean), "_completeReg"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentId")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentId")
             };
             var result = db.GetDataset("sp_StudentDetail_SelByRegno", param);
             if (result != null && result.Tables.Count > 0)
@@ -440,7 +437,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(StudentUid, typeof(System.String), "_studentUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentId")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentId")
             };
             var result = db.GetDataset("sp_StudentDetail_SelByStudentUid", param);
             if (result != null && result.Tables.Count > 0 && result.Tables[0].Rows.Count > 0)
@@ -453,7 +450,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(StaffUid, typeof(System.String), "_staffUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentId")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentId")
             };
             var result = db.GetDataset("sp_StaffMembers_SelByStaffUid", param);
             if (result != null && result.Tables.Count > 0)
@@ -466,7 +463,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(StaffUid, typeof(System.String), "_staffUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentId")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentId")
             };
             var result = db.GetDataset("sp_OtherStaffMembers_SelByStaffUid", param);
             if (result != null && result.Tables.Count > 0)
@@ -479,7 +476,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(ImageUid, typeof(System.String), "_imageUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentId")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentId")
             };
             string result = db.ExecuteNonQuery("sp_DeleteImage_ByUid", param, true);
             return result;

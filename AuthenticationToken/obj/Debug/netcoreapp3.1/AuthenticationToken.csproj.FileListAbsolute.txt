@@ -1,0 +1,12 @@
+E:\Projects\SchoolInMind\SchoolInMindServer\AuthenticationToken\bin\Debug\netcoreapp3.1\AuthenticationToken.deps.json
+E:\Projects\SchoolInMind\SchoolInMindServer\AuthenticationToken\bin\Debug\netcoreapp3.1\AuthenticationToken.dll
+E:\Projects\SchoolInMind\SchoolInMindServer\AuthenticationToken\bin\Debug\netcoreapp3.1\AuthenticationToken.pdb
+E:\Projects\SchoolInMind\SchoolInMindServer\AuthenticationToken\bin\Debug\netcoreapp3.1\UtilityService.dll
+E:\Projects\SchoolInMind\SchoolInMindServer\AuthenticationToken\bin\Debug\netcoreapp3.1\UtilityService.pdb
+E:\Projects\SchoolInMind\SchoolInMindServer\AuthenticationToken\obj\Debug\netcoreapp3.1\AuthenticationToken.csprojAssemblyReference.cache
+E:\Projects\SchoolInMind\SchoolInMindServer\AuthenticationToken\obj\Debug\netcoreapp3.1\AuthenticationToken.AssemblyInfoInputs.cache
+E:\Projects\SchoolInMind\SchoolInMindServer\AuthenticationToken\obj\Debug\netcoreapp3.1\AuthenticationToken.AssemblyInfo.cs
+E:\Projects\SchoolInMind\SchoolInMindServer\AuthenticationToken\obj\Debug\netcoreapp3.1\AuthenticationToken.csproj.CoreCompileInputs.cache
+E:\Projects\SchoolInMind\SchoolInMindServer\AuthenticationToken\obj\Debug\netcoreapp3.1\AuthenticationToken.csproj.CopyComplete
+E:\Projects\SchoolInMind\SchoolInMindServer\AuthenticationToken\obj\Debug\netcoreapp3.1\AuthenticationToken.dll
+E:\Projects\SchoolInMind\SchoolInMindServer\AuthenticationToken\obj\Debug\netcoreapp3.1\AuthenticationToken.pdb

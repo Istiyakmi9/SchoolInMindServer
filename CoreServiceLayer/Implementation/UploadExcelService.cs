@@ -12,7 +12,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(objClassdetail.xmlData, typeof(System.String), "_xmlData"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_schoolTenentId")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_schoolTenentId")
             };
 
             Result = db.ExecuteNonQuery(ProcedureName, param, true);
@@ -24,7 +24,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(objClassdetail.xmlData, typeof(System.String), "_xmlData"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_schoolTenentId")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_schoolTenentId")
             };
 
             Result = db.ExecuteNonQuery(ProcedureName, param, true);
@@ -36,7 +36,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(objClassdetail.xmlData, typeof(System.String), "_xmlData"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_schoolTenentId"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_schoolTenentId"),
                 new DbParam(userDetail.UserId, typeof(System.String), "_AdminId")
             };
 
@@ -49,7 +49,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(objClassdetail.xmlData, typeof(System.String), "_xmlData"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_schoolTenentId"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_schoolTenentId"),
                 new DbParam(userDetail.UserId, typeof(System.String), "_AdminId")
             };
 

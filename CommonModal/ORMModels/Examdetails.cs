@@ -19,5 +19,6 @@ namespace CommonModal.ORMModels
         public int? AcademicYearTo { set; get; }
         public string FacultyUid { set; get; }
         public string AdminUid { set; get; }
+        public int AccedemicStartYear { set; get; }
     }
 }

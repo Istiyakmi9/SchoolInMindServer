@@ -74,7 +74,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(ExistingClientUid, typeof(System.String), "_clientUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentUid")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentUid")
             };
 
             DataSet ds = db.GetDataset("sp_Client_ByUid", param);
@@ -111,7 +111,7 @@ namespace CoreServiceLayer.Implementation
 
             DbParam[] param = new DbParam[]
             {
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentId")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentId")
             };
             DataSet ds = db.GetDataset("sp_Clients_GetAll", param);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)

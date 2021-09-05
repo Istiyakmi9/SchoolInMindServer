@@ -14,12 +14,10 @@ namespace CoreServiceLayer.Implementation
     {
         private string Result = string.Empty;
         private readonly IDb db;
-        private readonly IValidateModalService<ValidateModalService> validateModalService;
 
-        public ApplicationSettingService(IDb db, ValidateModalService validateModalService, CurrentSession currentSession)
+        public ApplicationSettingService(IDb db, CurrentSession currentSession)
         {
             this.db = db;
-            this.validateModalService = validateModalService;
             userDetail = currentSession.CurrentUserDetail;
         }
 
@@ -51,7 +49,7 @@ namespace CoreServiceLayer.Implementation
                     Parallel.ForEach(storeZone, Item =>
                     {
                         Item.AdminUid = this.userDetail.UserId;
-                        Item.TanentUid = this.userDetail.schooltenentId;
+                        Item.TanentUid = this.userDetail.TenentId;
                     });
 
                     ResultSet = this.beanContext.ConvertToDataSet<StoreZone>(storeZone);
@@ -69,7 +67,7 @@ namespace CoreServiceLayer.Implementation
         {
             DbParam[] param = new DbParam[]
             {
-                new DbParam(this.userDetail.schooltenentId, typeof(System.String), "_TanentUid")
+                new DbParam(this.userDetail.TenentId, typeof(System.String), "_TanentUid")
             };
 
             ResultSet = this.db.GetDataset("sp_StoreZone_Sel", param);
@@ -81,7 +79,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(RoomsCount, typeof(System.Int32), "_RoomsCount"),
-                new DbParam(this.userDetail.schooltenentId, typeof(System.String), "_TanentUid"),
+                new DbParam(this.userDetail.TenentId, typeof(System.String), "_TanentUid"),
                 new DbParam(this.userDetail.UserId, typeof(System.String), "_AdminUid")
             };
 
@@ -116,7 +114,7 @@ namespace CoreServiceLayer.Implementation
                 new DbParam(roomDetail.ClassDetailUid, typeof(System.String), "_ClassDetailUid"),
                 new DbParam(roomDetail.RoomType, typeof(System.String), "_RoomType"),
                 new DbParam(this.userDetail.UserId, typeof(System.String), "_AdminUid"),
-                new DbParam(this.userDetail.schooltenentId, typeof(System.String), "_TanentUid")
+                new DbParam(this.userDetail.TenentId, typeof(System.String), "_TanentUid")
             };
 
             Result = this.db.ExecuteNonQuery("sp_Rooms_InsUpd", param, true);

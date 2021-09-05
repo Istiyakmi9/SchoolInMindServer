@@ -29,7 +29,7 @@ namespace CoreServiceLayer.Implementation
                 new DbParam(searchModal.SortBy, typeof(System.String), "_sortBy"),
                 new DbParam(searchModal.PageIndex, typeof(System.Int32), "_pageIndex"),
                 new DbParam(searchModal.PageSize, typeof(System.Int32), "_pageSize"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentId")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentId")
             };
 
             DataSet ds = db.GetDataset("sp_Assignment_SelByFilter", param);

@@ -15,10 +15,14 @@ E:\Projects\EdServerCore\SchoolInMindServer\CoreServiceLayer\obj\Debug\netcoreap
 E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\bin\Debug\netcoreapp3.1\CoreServiceLayer.deps.json
 E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\bin\Debug\netcoreapp3.1\CoreServiceLayer.dll
 E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\bin\Debug\netcoreapp3.1\CoreServiceLayer.pdb
+E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\bin\Debug\netcoreapp3.1\AuthenticationToken.dll
 E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\bin\Debug\netcoreapp3.1\BottomhalfCore.dll
 E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\bin\Debug\netcoreapp3.1\CommonModal.dll
+E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\bin\Debug\netcoreapp3.1\UtilityService.dll
+E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\bin\Debug\netcoreapp3.1\AuthenticationToken.pdb
 E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\bin\Debug\netcoreapp3.1\BottomhalfCore.pdb
 E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\bin\Debug\netcoreapp3.1\CommonModal.pdb
+E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\bin\Debug\netcoreapp3.1\UtilityService.pdb
 E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\obj\Debug\netcoreapp3.1\CoreServiceLayer.csprojAssemblyReference.cache
 E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\obj\Debug\netcoreapp3.1\CoreServiceLayer.AssemblyInfoInputs.cache
 E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\obj\Debug\netcoreapp3.1\CoreServiceLayer.AssemblyInfo.cs

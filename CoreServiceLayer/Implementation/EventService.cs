@@ -31,7 +31,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(SearchStr, typeof(System.String), "_SearchStr"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentId")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentId")
             };
             DataSet ds = db.GetDataset("sp_schoolevents_Sel", param);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -49,7 +49,7 @@ namespace CoreServiceLayer.Implementation
                 new DbParam(searchModal.SortBy, typeof(System.String), "_sortBy"),
                 new DbParam(searchModal.PageIndex, typeof(System.Int32), "_pageIndex"),
                 new DbParam(searchModal.PageSize, typeof(System.Int32), "_pageSize"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentUid")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentUid")
             };
 
             DataSet ds = db.GetDataset("sp_Subject_SelFilter", param);
@@ -64,7 +64,7 @@ namespace CoreServiceLayer.Implementation
                 new DbParam(ObjAssignTeacher.TimetableUid, typeof(System.String), "_TimetableUid"),
                 new DbParam(ObjAssignTeacher.ClassDetailUid, typeof(System.String), "_ClassDetailUid"),
                 new DbParam(null, typeof(System.String), "_PeriodUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TanentUid"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TanentUid"),
                 new DbParam(ObjAssignTeacher.SubstitutedFacultyUid, typeof(System.String), "_SubstitutedFacultiUid"),
                 new DbParam(ObjAssignTeacher.FacultyUid, typeof(System.String), "_FacultyUid"),
                 new DbParam(ObjAssignTeacher.SubjectUid, typeof(System.String), "_SubjectUid"),
@@ -84,7 +84,7 @@ namespace CoreServiceLayer.Implementation
                 DbParam[] param = new DbParam[]
                 {
                 new DbParam(ObjSchoolCalendar.SchoolCalendarId, typeof(System.String), "_SchoolEventUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentUid"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentUid"),
                 new DbParam(ObjSchoolCalendar.Title, typeof(System.String), "_Title"),
                 new DbParam(ObjSchoolCalendar.Description, typeof(System.String), "_Description"),
                 new DbParam(ObjSchoolCalendar.StartDate, typeof(System.DateTime), "_StartDate"),
@@ -105,7 +105,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(SubjectUid, typeof(System.String), "_SubjectUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentUid")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentUid")
             };
             DataSet ds = db.GetDataset("sp_Faculty_BySubject", param);
             OutParam = JsonConvert.SerializeObject(ds);
@@ -130,7 +130,7 @@ namespace CoreServiceLayer.Implementation
                     new DbParam(timeSettingModal.LunchTime, typeof(System.String), "_LunchBreakTime"),
                     new DbParam(timeSettingModal.LunchDuration, typeof(System.String), "_LunchBreakDuration"),
                     new DbParam(timeSettingModal.TimingDescription, typeof(System.String), "_RuleDescription"),
-                    new DbParam(userDetail.schooltenentId, typeof(System.String), "_TanentUid"),
+                    new DbParam(userDetail.TenentId, typeof(System.String), "_TanentUid"),
                     new DbParam(userDetail.UserId, typeof(System.String), "_AdminId")
                 };
                 var TimetableRuleUid = db.ExecuteNonQuery("sp_TimetableSetting_InsUpd", param, true);
@@ -179,7 +179,7 @@ namespace CoreServiceLayer.Implementation
             ResultSet = null;
             DbParam[] param = new DbParam[]
             {
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TanentUid")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TanentUid")
             };
             DataSet ds = db.GetDataset("sp_TimetableSetting_Sel", param);
             if (ds != null && ds.Tables.Count == 3 && ds.Tables[0].Rows.Count > 0)
@@ -197,7 +197,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(ClassDetailUid, typeof(System.String), "_ClassDetailUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TanentUid")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TanentUid")
             };
             DataSet ds = db.GetDataset("sp_Timetable_ByFilter", param);
             if (ds != null && ds.Tables.Count == 4)
@@ -215,7 +215,7 @@ namespace CoreServiceLayer.Implementation
         {
             DbParam[] param = new DbParam[]
             {
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TanentUid")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TanentUid")
             };
             DataSet ds = db.GetDataset("sp_FacultyWithSubject_Sel", param);
             if (ds != null && ds.Tables.Count == 1)
@@ -232,7 +232,7 @@ namespace CoreServiceLayer.Implementation
             {
                 new DbParam(timetableAllocationModal.TimetableUid, typeof(System.String), "_TimetableUid"),
                 new DbParam(timetableAllocationModal.ClassDetailUid, typeof(System.String), "_ClassDetailUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TanentUid"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TanentUid"),
                 new DbParam(timetableAllocationModal.RulebookUid, typeof(System.String), "_RulebookUid"),
                 new DbParam(timetableAllocationModal.SubstitutedFacultiUid, typeof(System.String), "_SubstitutedFacultiUid"),
                 new DbParam(timetableAllocationModal.FacultyUid, typeof(System.String), "_FacultyUid"),

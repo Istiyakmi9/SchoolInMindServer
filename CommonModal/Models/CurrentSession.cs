@@ -1,4 +1,5 @@
 ﻿
+using AuthenticationToken.Model;
 using BottomhalfCore.Annotations;
 using CommonModal.ProcedureModel;
 
@@ -12,6 +13,6 @@ namespace CommonModal.Models
         public string Culture { set; get; } = "en";
         public string RequestPath { set; get; }
         public string FileUploadFolderName { set; get; }
-        public UserDetail CurrentUserDetail { set; get; }
+        public SessionModal CurrentUserDetail { set; get; }
     }
 }

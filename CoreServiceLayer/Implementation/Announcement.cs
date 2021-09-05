@@ -31,7 +31,7 @@ namespace CoreServiceLayer.Implementation
                 new DbParam(fetchAnnouncement.searchModal.PageSize, typeof(System.Int32), "_pageSize"),
                 new DbParam(fetchAnnouncement.StudentUid, typeof(System.String), "_studentUid"),
                 new DbParam(fetchAnnouncement.ClassDetailUid, typeof(System.String), "_classDetailUid"),
-                new DbParam(this.userDetail.schooltenentId, typeof(System.String), "_tenentId")
+                new DbParam(this.userDetail.TenentId, typeof(System.String), "_tenentId")
             };
 
             DataSet ds = db.GetDataset("sp_Announcement_SelFilter", param);

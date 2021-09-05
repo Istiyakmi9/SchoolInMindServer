@@ -1,14 +1,11 @@
-﻿using BottomhalfCore.CacheManagement.Caching;
-using BottomhalfCore.CacheManagement.CachingInterface;
+﻿using AuthenticationToken;
 using BottomhalfCore.DatabaseLayer.Common.Code;
-using BottomhalfCore.FactoryContext;
 using BottomhalfCore.Services.Code;
 using BottomhalfCore.Services.Interface;
 using CommonModal.Models;
 using CommonModal.ProcedureModel;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
 using ServiceLayer.Interface;
 using System;
 using System.Data;
@@ -20,44 +17,20 @@ namespace CoreServiceLayer.Implementation
 {
     public class AuthenticationService : CurrentUserObject, IAuthenticationService<AuthenticationService>
     {
-        private ICacheManager<CacheManager> cacheManager;
-        private readonly IExceptionLogger<ExceptionLogger> exceptionLogger;
         private IAutoMapper<TableAutoMapper> autoMapper;
         private readonly IDb db;
         private readonly IConfiguration configuration;
+        private readonly IJwtTokenManager _JwtTokenManager;
 
-        public AuthenticationService(IDb db, ExceptionLogger exceptionLogger,
+        public AuthenticationService(IDb db,
             TableAutoMapper autoMapper,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IJwtTokenManager JwtTokenManager)
         {
             this.db = db;
+            _JwtTokenManager = JwtTokenManager;
             this.configuration = configuration;
             this.autoMapper = autoMapper;
-            this.exceptionLogger = exceptionLogger;
-            this.cacheManager = CacheManager.GetInstance();
-        }
-
-        private string GenerateToken(AuthUser userInfo)
-        {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-            var claims = new[] {
-                new Claim(JwtRegisteredClaimNames.Sub, userInfo.UserId),
-                new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
-                new Claim("Mobile", userInfo.MobileNo),
-                new Claim("role", userInfo.Role),
-                new Claim("TenentUid", userInfo.SchoolTenentId),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-            };
-
-            var token = new JwtSecurityToken(configuration["Jwt:Issuer"],
-              configuration["Jwt:Issuer"],
-              claims: claims,
-              expires: DateTime.UtcNow.AddMinutes(120),
-              signingCredentials: credentials);
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
         public DataSet GetUserObject(AuthUser objAuthUser)
@@ -99,9 +72,15 @@ namespace CoreServiceLayer.Implementation
                 UserDetail userDetail = this.autoMapper.AutoMapToObject<UserDetail>(ds.Tables[0]);
                 if (userDetail != null)
                 {
-                    authUser.Role = Policies.Admin;
-                    Token = GenerateToken(authUser);
-                    beanContext.AddNewSession(string.Empty, "userdetail", userDetail, Token);
+                    UserToken userToken = new UserToken
+                    {
+                        Email = userDetail.Email,
+                        UserId = userDetail.UserId,
+                        Mobile = userDetail.MobileNo,
+                        TenentId = userDetail.schooltenentId,
+                        Role = Policies.Admin
+                    };
+                    Token = _JwtTokenManager.GenerateToken<UserToken>(userToken.UserId, userDetail.Email, userToken);
                 }
             }
 

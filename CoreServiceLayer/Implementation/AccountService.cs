@@ -68,7 +68,7 @@ namespace CoreServiceLayer.Implementation
             {
                 new DbParam(PayeeUid, typeof(System.String), "_PayeeUid"),
                 new DbParam(ClassDetailUid, typeof(System.String), "_ClassDetailUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TanentId"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TanentId"),
                 new DbParam(PaymentYear, typeof(System.Int32), "_Year")
             };
 
@@ -83,7 +83,7 @@ namespace CoreServiceLayer.Implementation
                 new DbParam(MonthString, typeof(System.String), "_MonthString"),
                 new DbParam(PayeeUid, typeof(System.String), "_PayeeUid"),
                 new DbParam(PayeeCode, typeof(System.Int32), "_UserCode"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentId"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentId"),
                 new DbParam(DateTime.Now, typeof(System.DateTime), "_AddedOn")
             };
 
@@ -104,7 +104,7 @@ namespace CoreServiceLayer.Implementation
             else
             {
                 ObjCommonFeesModal.SchoolFeeDetailId = null;
-                ObjCommonFeesModal.schooltenentId = this.userDetail.schooltenentId;
+                ObjCommonFeesModal.schooltenentId = this.userDetail.TenentId;
                 ObjCommonFeesModal.FineForPayeeUid = "";
             }
 
@@ -159,7 +159,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(StudentUid, typeof(System.String), "_StudentUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentId")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentId")
             };
             DataSet ds = db.GetDataset("sp_ParentDetail_ByStudentUid", param);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -178,7 +178,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(ClassDetailUid, typeof(System.String), "_classDetailUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentUid")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentUid")
             };
             DataSet ds = db.GetDataset("sp_GetFeeDetail_ByClassDetailUid", param);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -227,7 +227,7 @@ namespace CoreServiceLayer.Implementation
         {
             DbParam[] param = new DbParam[]
             {
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_schooltenentid"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_schooltenentid"),
                 new DbParam(PayeeUid, typeof(System.String), "_payeeuid"),
                 new DbParam(MonthNumber, typeof(System.String), "_paymentformonth"),
                 new DbParam(Year, typeof(System.Int32), "_foryear"),

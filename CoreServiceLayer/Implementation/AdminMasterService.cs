@@ -21,7 +21,7 @@ namespace CoreServiceLayer.Implementation
         public AdminMasterService(IDb db, ValidateModalService validateModalService, CurrentSession currentSession)
         {
             this.db = db;
-            userDetail = new UserDetail { schooltenentId = "1617971649666" };
+            userDetail = currentSession.CurrentUserDetail;
             this.validateModalService = validateModalService;
         }
 
@@ -62,7 +62,7 @@ namespace CoreServiceLayer.Implementation
         {
             DbParam[] param = new DbParam[]
             {
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TanentId")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TanentId")
             };
             DataSet ds = db.GetDataset("sp_ExamDescription_SelAll", param);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -73,10 +73,10 @@ namespace CoreServiceLayer.Implementation
         public string GetExamDetail(int Year)
         {
             if (Year == 0)
-                Year = userDetail.AccedemicStartYear;
+                Year = DateTime.Now.Year;
             DbParam[] param = new DbParam[]
             {
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentId"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentId"),
                 new DbParam(Year, typeof(System.Int32), "_year")
             };
             DataSet ds = db.GetDataset("sp_ExamDetails_SelFilter", param);
@@ -87,20 +87,20 @@ namespace CoreServiceLayer.Implementation
             return Result;
         }
 
-        public string ExamDataInsertion(Examdetails ObjExamdetails)
+        public string ExamDataInsertion(Examdetails examdetails)
         {
             DbParam[] param = new DbParam[]
             {
                 new DbParam(null, typeof(System.String), "_ExamDetailId"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_SchooltenentId"),
-                new DbParam(ObjExamdetails.ExamDescriptionId, typeof(System.String), "_ExamDescriptionId"),
-                new DbParam(ObjExamdetails.Class, typeof(System.String), "_Class"),
-                new DbParam(ObjExamdetails.SubjectId, typeof(System.String), "_SubjectId"),
-                new DbParam(ObjExamdetails.ExamDate, typeof(System.DateTime), "_ExamDate"),
-                new DbParam(ObjExamdetails.StartTime, typeof(System.String), "_Starttime"),
-                new DbParam(ObjExamdetails.Duration, typeof(System.Int64), "_Duration"),
-                new DbParam(userDetail.AccedemicStartYear, typeof(System.Int32), "_AcademicYearFrom"),
-                new DbParam(userDetail.AccedemicStartYear + 1, typeof(System.Int32), "_AcademicYearTo"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_SchooltenentId"),
+                new DbParam(examdetails.ExamDescriptionId, typeof(System.String), "_ExamDescriptionId"),
+                new DbParam(examdetails.Class, typeof(System.String), "_Class"),
+                new DbParam(examdetails.SubjectId, typeof(System.String), "_SubjectId"),
+                new DbParam(examdetails.ExamDate, typeof(System.DateTime), "_ExamDate"),
+                new DbParam(examdetails.StartTime, typeof(System.String), "_Starttime"),
+                new DbParam(examdetails.Duration, typeof(System.Int64), "_Duration"),
+                new DbParam(examdetails.AccedemicStartYear, typeof(System.Int32), "_AcademicYearFrom"),
+                new DbParam(examdetails.AccedemicStartYear + 1, typeof(System.Int32), "_AcademicYearTo"),
                 new DbParam(userDetail.UserId, typeof(System.String), "_Adminid")
             };
             Result = db.ExecuteNonQuery("sp_examdetails_InsUpd", param, true);
@@ -121,7 +121,7 @@ namespace CoreServiceLayer.Implementation
                 new DbParam(examDescription.Description, typeof(System.String), "_description"),
                 new DbParam(examDescription.ExpectedDate, typeof(System.DateTime), "_expectedDate"),
                 new DbParam(examDescription.ActualDate, typeof(System.DateTime), "_actualDate"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_schooltenentid"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_schooltenentid"),
                 new DbParam(userDetail.UserId, typeof(System.String), "_adminId")
                 };
                 Result = db.ExecuteNonQuery("sp_examiddescription_InsUpd", param, true);
@@ -179,7 +179,7 @@ namespace CoreServiceLayer.Implementation
                 new DbParam(objClassdetail.GirlSeats, typeof(System.String), "_GirlSeats"),
                 new DbParam(objClassdetail.BoySeats, typeof(System.String), "_BoySeats"),
                 new DbParam(objClassdetail.RoomUid, typeof(System.Int64), "_RoomUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_schooltenentId"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_schooltenentId"),
                 new DbParam(userDetail.UserId, typeof(System.String), "_AdminId")
             };
             Result = db.ExecuteNonQuery("sp_ClassDetail_InsUpd", param, true);
@@ -190,7 +190,7 @@ namespace CoreServiceLayer.Implementation
         {
             DbParam[] param = new DbParam[]
             {
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentId")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentId")
             };
 
             string ProcessingStatus = string.Empty;
@@ -209,7 +209,7 @@ namespace CoreServiceLayer.Implementation
                 DbParam[] param = new DbParam[]
                 {
                 new DbParam(subject.SubjectId, typeof(System.String), "_Subjectid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_Schooltenentid"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_Schooltenentid"),
                 new DbParam(subject.SubjectName, typeof(System.String), "_SubjectName"),
                 new DbParam(subject.SubjectCode, typeof(System.Int32), "_SubjectCode"),
                 new DbParam(subject.SubjectCredit, typeof(System.Int64), "_SubjectCredit"),
@@ -229,7 +229,7 @@ namespace CoreServiceLayer.Implementation
                 DbParam[] param = new DbParam[]
                 {
                     new DbParam(classdetail.ClassDetailUid, typeof(System.String), "_ClassDetailUid"),
-                    new DbParam(userDetail.schooltenentId, typeof(System.String), "_TanentUid"),
+                    new DbParam(userDetail.TenentId, typeof(System.String), "_TanentUid"),
                     new DbParam(classdetail.CreatedOn.Month, typeof(System.Int32), "_Month"),
                     new DbParam(classdetail.CreatedOn.Year, typeof(System.Int32), "_Year")
                 };
@@ -242,7 +242,7 @@ namespace CoreServiceLayer.Implementation
         {
             Parallel.ForEach(attendanceClassWise, item =>
             {
-                item.TanentUid = userDetail.schooltenentId;
+                item.TanentUid = userDetail.TenentId;
             });
             ResultSet = beanContext.ConvertToDataSet<AttendanceClassWise>(attendanceClassWise);
             if (ResultSet != null && ResultSet.Tables.Count > 0)
@@ -258,7 +258,7 @@ namespace CoreServiceLayer.Implementation
                 DbParam[] param = new DbParam[]
                 {
                     new DbParam(attendance.ClassDetailUid, typeof(System.String), "_ClassDetailUid"),
-                    new DbParam(userDetail.schooltenentId, typeof(System.String), "_TanentUid"),
+                    new DbParam(userDetail.TenentId, typeof(System.String), "_TanentUid"),
                     new DbParam(attendance.Date.Month, typeof(System.Int32), "_Month"),
                     new DbParam(attendance.Date.Year, typeof(System.Int32), "_Year")
                 };
@@ -331,7 +331,7 @@ namespace CoreServiceLayer.Implementation
                         new DbParam(menuAndRoles.AccessCode, typeof(System.Int32), "_AccessCode"),
                         new DbParam(menuAndRoles.RoleName, typeof(System.String), "_Roles"),
                         new DbParam(menuAndRoles.RoleDescription, typeof(System.String), "_AccessCodeDefination"),
-                        new DbParam(userDetail.schooltenentId, typeof(System.String), "_schooltenentId")
+                        new DbParam(userDetail.TenentId, typeof(System.String), "_schooltenentId")
                     };
                     Result = db.ExecuteNonQuery("sp_AccessLevel_InsUpd", param, true);
                     if (!string.IsNullOrEmpty(Result))
@@ -360,7 +360,7 @@ namespace CoreServiceLayer.Implementation
         {
             DbParam[] param = new DbParam[]
             {
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TanentUid"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TanentUid"),
             };
             ResultSet = db.GetDataset("sp_AccessLevel_Sel", param);
             DataSet MenuSet = db.GetDataset("sp_RolesAndMenu_GetAll");
@@ -372,7 +372,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(AccessLevelUid, typeof(System.String), "_AccessLevelUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TanentUid")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TanentUid")
             };
             ResultSet = db.GetDataset("sp_MenuDetail_ByAccessCode", param);
             return JsonConvert.SerializeObject(ResultSet);

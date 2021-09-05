@@ -1,3 +1,5 @@
+using AuthenticationToken;
+using AuthenticationToken.Model;
 using BottomhalfCore.FactoryContext;
 using CommonModal.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -51,6 +53,9 @@ namespace SchoolInMindServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var jwtSetting = Configuration.GetSection("Jwt").Get<JwtSetting>();
+
+            services.AddSingleton<JwtSetting>(jwtSetting);
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(x =>
                 {
@@ -60,9 +65,10 @@ namespace SchoolInMindServer
                         ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = Configuration["Jwt:Issuer"],
-                        ValidAudience = Configuration["Jwt:Issuer"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                        ClockSkew = TimeSpan.Zero,
+                        ValidIssuer = jwtSetting.Issuer,
+                        ValidAudience = jwtSetting.Issuer,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSetting.Key))
                     };
                 });
 
@@ -78,8 +84,6 @@ namespace SchoolInMindServer
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
             });
 
-            string connectionString = Configuration.GetConnectionString("simdb");
-            services.Configure<AuthCondition>(i => Configuration.GetSection("noauthpath").Bind(i));
             context.BuildServices(services, new List<string>
             {
                 "SchoolInMindServer.Controllers",
@@ -87,10 +91,10 @@ namespace SchoolInMindServer
                 "CommonModal.Models",
                 "CommonModal.ORMModels",
                 "CommonModal.ProcedureModel"
-            }, true, false, connectionString);
+            }, true, false, Configuration.GetConnectionString("simdb"));
             services.AddHttpContextAccessor();
-            services.Configure<MySetting>(config => Configuration.GetSection("IntSetting").Bind(config));
             services.AddScoped<CurrentSession>();
+            services.AddScoped<IJwtTokenManager, JwtTokenManager>();
 
             services.AddCors(options =>
             {

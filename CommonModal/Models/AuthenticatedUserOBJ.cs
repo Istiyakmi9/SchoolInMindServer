@@ -29,4 +29,13 @@ namespace CommonModal.Models
         public string AdminId { set; get; }
         public string SessionToken { set; get; }
     }
+
+    public class UserToken
+    {
+        public string Role { set; get; }
+        public string Mobile { set; get; }
+        public string TenentId { set; get; }
+        public string Email { set; get; }
+        public string UserId { set; get; }
+    }
 }

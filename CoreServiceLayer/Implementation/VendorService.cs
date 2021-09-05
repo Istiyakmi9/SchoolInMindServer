@@ -14,11 +14,11 @@ namespace CoreServiceLayer.Implementation
         private readonly IValidateModalService<ValidateModalService> validateModalService;
         private readonly IDb db;
         private readonly IAutoMapper<TableAutoMapper> mapper;
-        public VendorService(ValidateModalService validateModalService, UserDetail userDetail)
+        public VendorService(ValidateModalService validateModalService, CurrentSession currentSession)
         {
             this.validateModalService = validateModalService;
             this.mapper = new TableAutoMapper();
-            this.userDetail = userDetail;
+            this.userDetail = currentSession.CurrentUserDetail;
         }
 
         public ServiceResult RegisterVendorService(Vendor objVendor)
@@ -30,7 +30,7 @@ namespace CoreServiceLayer.Implementation
                 DbParam[] param = new DbParam[]
                 {
                     new DbParam(objVendor.VendorUId, typeof(System.String), "_vendoruid"),
-                    new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentid"),
+                    new DbParam(userDetail.TenentId, typeof(System.String), "_tenentid"),
                     new DbParam(objVendor.SellerFirstName, typeof(System.String), "_sellerfirstname"),
                     new DbParam(objVendor.SellerLastName, typeof(System.String), "_sellerlastname"),
                     new DbParam(objVendor.ShopName, typeof(System.String), "_shopname"),
@@ -59,12 +59,11 @@ namespace CoreServiceLayer.Implementation
 
         public Vendor GetVendorByUid(string vendorUId)
         {
-            string Message = null;
             Vendor objVendor = null;
             DbParam[] param = new DbParam[]
             {
                 new DbParam(vendorUId, typeof(System.String), "_vendorUid"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentUid")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentUid")
             };
 
             string ProcessingStatus = string.Empty;

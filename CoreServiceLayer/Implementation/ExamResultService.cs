@@ -1,8 +1,10 @@
 ﻿using BottomhalfCore.DatabaseLayer.Common.Code;
+using CommonModal.Models;
 using CommonModal.ORMModels;
 using CommonModal.ProcedureModel;
 using Newtonsoft.Json;
 using ServiceLayer.Interface;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -12,10 +14,10 @@ namespace CoreServiceLayer.Implementation
     {
         private readonly IDb db;
 
-        public ExamResultService(UserDetail userDetail, IDb db)
+        public ExamResultService(CurrentSession currentSession, IDb db)
         {
             this.db = db;
-            this.userDetail = userDetail;
+            this.userDetail = currentSession.CurrentUserDetail;
         }
 
         public string GetResultById(int ExamId, string StudentId)
@@ -23,7 +25,7 @@ namespace CoreServiceLayer.Implementation
             string ResultSet = null;
             DbParam[] param = new DbParam[]
             {
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentId"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentId"),
                 new DbParam(ExamId, typeof(System.Int32), "_ExamId"),
                 new DbParam(StudentId, typeof(System.String), "_StudentId")
             };
@@ -43,7 +45,7 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(objExamResultPostData.RegistrationNo, typeof(System.String), "_registrationNo"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_tenentUid"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_tenentUid"),
                 new DbParam(objExamResultPostData.AcedimicYearFrom, typeof(System.Int32), "_academicYear"),
                 new DbParam(objExamResultPostData.ExamId, typeof(System.Int32), "_examId"),
             };
@@ -64,13 +66,13 @@ namespace CoreServiceLayer.Implementation
             DbParam[] param = new DbParam[]
             {
                 new DbParam(ObjExamResult.ExamResultId, typeof(System.String), "_ExamResultId"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentUid"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentUid"),
                 new DbParam(ObjExamResult.ExamDescriptionId, typeof(System.String), "_ExamDescriptionId"),
                 new DbParam(ObjExamResult.StudentUid, typeof(System.String), "_StudentUid"),
                 new DbParam(ObjExamResult.SubjectUid, typeof(System.String), "_SubjectUid"),
                 new DbParam(ObjExamResult.Marks, typeof(System.Int64), "_Marks"),
                 new DbParam(ObjExamResult.Grade, typeof(System.Int32), "_Grade"),
-                new DbParam(userDetail.AccedemicStartYear, typeof(System.Int32), "_AcedemicYearFrom")
+                new DbParam(DateTime.Now.Year, typeof(System.Int32), "_AcedemicYearFrom")
             };
 
             ResultSet = db.ExecuteNonQuery("sp_Examresult_InsUpd", param, true);
@@ -96,7 +98,7 @@ namespace CoreServiceLayer.Implementation
                 new DbParam(ShortBy, typeof(System.String), "_ShortBy"),
                 new DbParam(PageIndex, typeof(System.Int32), "_PageIndex"),
                 new DbParam(PageSize, typeof(System.Int32), "_PageSize"),
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentUid")
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentUid")
             };
 
             string ProcessingStatus = string.Empty;
@@ -114,7 +116,7 @@ namespace CoreServiceLayer.Implementation
             string ResultSet = null;
             DbParam[] param = new DbParam[]
             {
-                new DbParam(userDetail.schooltenentId, typeof(System.String), "_TenentId"),
+                new DbParam(userDetail.TenentId, typeof(System.String), "_TenentId"),
                 new DbParam(StudentId, typeof(System.String), "_StudentId")
             };
 
