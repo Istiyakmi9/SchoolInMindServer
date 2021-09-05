@@ -70,5 +70,12 @@ namespace SchoolInMindServer.Controllers
             string Result = applicationSettingService.UpdateRoomDetailService(roomDetail);
             return BuildResponse(Result, System.Net.HttpStatusCode.OK);
         }
+
+        [HttpPost("GetHtml")]
+        public IResponse<ApiResponse> GetHtml(CurrentSession currentSession)
+        {
+            string Result = applicationSettingService.GetHtml(currentSession.FileUploadFolderName);
+            return BuildResponse(Result, System.Net.HttpStatusCode.OK);
+        }
     }
 }

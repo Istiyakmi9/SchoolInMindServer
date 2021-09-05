@@ -1,10 +1,12 @@
 ﻿using BottomhalfCore.Annotations;
 using BottomhalfCore.DatabaseLayer.Common.Code;
 using CommonModal.Models;
+using MultiTypeDocumentConverter.Service;
 using Newtonsoft.Json;
 using ServiceLayer.Interface;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,11 +16,13 @@ namespace CoreServiceLayer.Implementation
     {
         private string Result = string.Empty;
         private readonly IDb db;
+        private readonly IDocumentConverter _documentConverter;
 
-        public ApplicationSettingService(IDb db, CurrentSession currentSession)
+        public ApplicationSettingService(IDb db, CurrentSession currentSession, IDocumentConverter documentConverter)
         {
             this.db = db;
             userDetail = currentSession.CurrentUserDetail;
+            _documentConverter = documentConverter;
         }
 
         public DataSet DeleteService(int storeIds)
@@ -130,6 +134,12 @@ namespace CoreServiceLayer.Implementation
                 Result = GetRoomService(searchModal);
             }
             return Result;
+        }
+
+        public string GetHtml(string FileRelativePath)
+        { 
+            string ActualFolderPath = Path.Combine(this.beanContext.GetContentRootPath(), FileRelativePath);
+            return _documentConverter.DocToHtml(ActualFolderPath);
         }
     }
 }

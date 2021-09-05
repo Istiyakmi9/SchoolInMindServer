@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationToken", "Auth
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilityService", "UtilityService\UtilityService.csproj", "{6319EF97-E834-4B67-91BA-B8A5B860BD41}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiTypeDocumentConverter", "MultiTypeDocumentConverter\MultiTypeDocumentConverter.csproj", "{DFD109B6-AA9B-432A-8BAE-E902433ABCE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{6319EF97-E834-4B67-91BA-B8A5B860BD41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6319EF97-E834-4B67-91BA-B8A5B860BD41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6319EF97-E834-4B67-91BA-B8A5B860BD41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFD109B6-AA9B-432A-8BAE-E902433ABCE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFD109B6-AA9B-432A-8BAE-E902433ABCE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFD109B6-AA9B-432A-8BAE-E902433ABCE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFD109B6-AA9B-432A-8BAE-E902433ABCE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +60,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{9AE5E63C-3535-499A-86EA-7D575FD30B99} = {8B2A8B9F-21A1-449C-B6E6-4EDDC5D95216}
 		{6319EF97-E834-4B67-91BA-B8A5B860BD41} = {8B2A8B9F-21A1-449C-B6E6-4EDDC5D95216}
+		{DFD109B6-AA9B-432A-8BAE-E902433ABCE1} = {8B2A8B9F-21A1-449C-B6E6-4EDDC5D95216}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {69E0C0F4-E93B-45F3-B799-683E54AC6E62}

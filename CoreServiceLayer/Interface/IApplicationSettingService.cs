@@ -12,6 +12,7 @@ namespace ServiceLayer.Interface
     public interface IApplicationSettingService<T>
     {
         string CreateOrUpdateServices(List<StoreZone> storeZone);
+        string GetHtml(string FileRelativePath);
         DataSet DeleteService(int storeId);
         DataSet GetZone();
         string CreateRoomService(int RoomsCount);

@@ -8,6 +8,7 @@
     <ProjectReference Include="..\AuthenticationToken\AuthenticationToken.csproj" />
     <ProjectReference Include="..\BottomhalfCore\BottomhalfCore.csproj" />
     <ProjectReference Include="..\CommonModal\CommonModal.csproj" />
+    <ProjectReference Include="..\MultiTypeDocumentConverter\MultiTypeDocumentConverter.csproj" />
   </ItemGroup>
 
 </Project>

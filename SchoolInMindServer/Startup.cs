@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using MultiTypeDocumentConverter.Service;
 using Newtonsoft.Json.Serialization;
 using SchoolInMindServer.MiddlewareServices;
 using SchoolInMindServer.Modal;
@@ -54,6 +55,7 @@ namespace SchoolInMindServer
         public void ConfigureServices(IServiceCollection services)
         {
             var jwtSetting = Configuration.GetSection("Jwt").Get<JwtSetting>();
+            var currentSession = Configuration.GetSection("SessionData").Get<CurrentSession>();
 
             services.AddSingleton<JwtSetting>(jwtSetting);
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -93,8 +95,9 @@ namespace SchoolInMindServer
                 "CommonModal.ProcedureModel"
             }, true, false, Configuration.GetConnectionString("simdb"));
             services.AddHttpContextAccessor();
-            services.AddScoped<CurrentSession>();
+            services.AddScoped<CurrentSession>(x => currentSession);
             services.AddScoped<IJwtTokenManager, JwtTokenManager>();
+            services.AddScoped<IDocumentConverter, DocumentConverter>();
 
             services.AddCors(options =>
             {

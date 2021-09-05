@@ -30,3 +30,5 @@ E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\obj\Debug\netcoreap
 E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\obj\Debug\netcoreapp3.1\CoreServiceLayer.csproj.CopyComplete
 E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\obj\Debug\netcoreapp3.1\CoreServiceLayer.dll
 E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\obj\Debug\netcoreapp3.1\CoreServiceLayer.pdb
+E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\bin\Debug\netcoreapp3.1\MultiTypeDocumentConverter.dll
+E:\Projects\SchoolInMind\SchoolInMindServer\CoreServiceLayer\bin\Debug\netcoreapp3.1\MultiTypeDocumentConverter.pdb
