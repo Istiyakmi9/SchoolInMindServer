@@ -29,6 +29,7 @@ namespace MultiTypeDocumentConverter.Service
         public string DocToHtml(string FilePath)
         {
             string outFolder = "";
+            FilePath = FilePath.Replace("\\", @"/");
             if (FilePath.IndexOf(".doc") != -1)
                 outFolder = FilePath.Replace(".doc", ".html");
             else

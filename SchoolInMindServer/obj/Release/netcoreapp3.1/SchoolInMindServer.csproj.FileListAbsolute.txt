@@ -1,4 +1,0 @@
-E:\Projects\EdServerCore\SchoolInMindServer\SchoolInMindServer\obj\Release\netcoreapp3.1\SchoolInMindServer.AssemblyInfoInputs.cache
-E:\Projects\EdServerCore\SchoolInMindServer\SchoolInMindServer\obj\Release\netcoreapp3.1\SchoolInMindServer.AssemblyInfo.cs
-E:\Projects\EdServerCore\SchoolInMindServer\SchoolInMindServer\obj\Release\netcoreapp3.1\SchoolInMindServer.csproj.CoreCompileInputs.cache
-E:\Projects\EdServerCore\SchoolInMindServer\SchoolInMindServer\obj\Release\netcoreapp3.1\SchoolInMindServer.MvcApplicationPartsAssemblyInfo.cache

@@ -1,3 +1,0 @@
-E:\Projects\EdServerCore\SchoolInMindServer\CommonModal\obj\Release\netcoreapp3.1\CommonModal.AssemblyInfoInputs.cache
-E:\Projects\EdServerCore\SchoolInMindServer\CommonModal\obj\Release\netcoreapp3.1\CommonModal.AssemblyInfo.cs
-E:\Projects\EdServerCore\SchoolInMindServer\CommonModal\obj\Release\netcoreapp3.1\CommonModal.csproj.CoreCompileInputs.cache

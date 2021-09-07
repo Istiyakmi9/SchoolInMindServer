@@ -1,6 +1,0 @@
-E:\Projects\EdServerCore\SchoolInMindServer\SchoolInMindServer\obj\Debug\net5.0\SchoolInMindServer.csprojAssemblyReference.cache
-E:\Projects\EdServerCore\SchoolInMindServer\SchoolInMindServer\obj\Debug\net5.0\SchoolInMindServer.GeneratedMSBuildEditorConfig.editorconfig
-E:\Projects\EdServerCore\SchoolInMindServer\SchoolInMindServer\obj\Debug\net5.0\SchoolInMindServer.AssemblyInfoInputs.cache
-E:\Projects\EdServerCore\SchoolInMindServer\SchoolInMindServer\obj\Debug\net5.0\SchoolInMindServer.AssemblyInfo.cs
-E:\Projects\EdServerCore\SchoolInMindServer\SchoolInMindServer\obj\Debug\net5.0\SchoolInMindServer.csproj.CoreCompileInputs.cache
-E:\Projects\EdServerCore\SchoolInMindServer\SchoolInMindServer\obj\Debug\net5.0\SchoolInMindServer.MvcApplicationPartsAssemblyInfo.cache

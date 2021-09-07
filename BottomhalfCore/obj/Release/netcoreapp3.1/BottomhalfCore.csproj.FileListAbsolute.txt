@@ -1,3 +1,0 @@
-E:\Projects\EdServerCore\SchoolInMindServer\BottomhalfCore\obj\Release\netcoreapp3.1\BottomhalfCore.AssemblyInfoInputs.cache
-E:\Projects\EdServerCore\SchoolInMindServer\BottomhalfCore\obj\Release\netcoreapp3.1\BottomhalfCore.AssemblyInfo.cs
-E:\Projects\EdServerCore\SchoolInMindServer\BottomhalfCore\obj\Release\netcoreapp3.1\BottomhalfCore.csproj.CoreCompileInputs.cache

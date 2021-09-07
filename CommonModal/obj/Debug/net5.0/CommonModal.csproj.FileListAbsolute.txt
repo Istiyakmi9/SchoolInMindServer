@@ -1,5 +1,0 @@
-E:\Projects\EdServerCore\SchoolInMindServer\CommonModal\obj\Debug\net5.0\CommonModal.csprojAssemblyReference.cache
-E:\Projects\EdServerCore\SchoolInMindServer\CommonModal\obj\Debug\net5.0\CommonModal.GeneratedMSBuildEditorConfig.editorconfig
-E:\Projects\EdServerCore\SchoolInMindServer\CommonModal\obj\Debug\net5.0\CommonModal.AssemblyInfoInputs.cache
-E:\Projects\EdServerCore\SchoolInMindServer\CommonModal\obj\Debug\net5.0\CommonModal.AssemblyInfo.cs
-E:\Projects\EdServerCore\SchoolInMindServer\CommonModal\obj\Debug\net5.0\CommonModal.csproj.CoreCompileInputs.cache
